@@ -1,41 +1,66 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import Image from "next/image";
 
 export function Services() {
   const services = [
-    { title: "Business Consulting", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" },
-    { title: "Growth Strategy", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" },
-    { title: "Digital Transformation", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80" },
+    {
+      title: "Business Consulting",
+      desc: "Expert advice to streamline operations and accelerate growth.",
+      img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "Growth Strategy",
+      desc: "Design strategies to scale your business and seize new opportunities.",
+      img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "Marketing Strategy",
+      desc: "Create data-driven strategies to boost brand visibility and engagement.",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    },
   ];
 
   return (
-    <section id="services" className="py-24 px-4 md:px-8 bg-card">
-      <div className="max-w-7xl mx-auto space-y-12">
-        <div className="text-center space-y-6 max-w-2xl mx-auto">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#FFF4ED] text-brand text-sm font-bold tracking-wide uppercase">
-            Our Expert Services
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-            Bespoke Solutions for Your Success
+    <section id="services" className="py-24 md:py-32 px-8">
+      <div className="max-w-[1140px] mx-auto">
+        {/* Heading */}
+        <div className="flex flex-col items-center gap-3 mb-14">
+          <span className="inline-flex items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">
+            Our Services
+          </span>
+          <h2 className="text-3xl md:text-[42px] font-medium text-foreground text-center leading-[1.25]">
+            Our Expert Services to{" "}
+            <span className="block">Drive Growth</span>
           </h2>
         </div>
 
-        <div className="space-y-6">
+        {/* Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <div 
-              key={i} 
-              className="group relative w-full h-[200px] md:h-[280px] rounded-[24px] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            <div
+              key={i}
+              className="group relative rounded-[20px] overflow-hidden h-[400px] md:h-[480px] cursor-pointer"
             >
-              <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/40 transition-colors duration-300 z-10" />
-              <img src={service.img} alt={service.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-              
-              <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex items-end justify-between">
-                <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-                  {service.title}
-                </h3>
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
-                  <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
-                </div>
+              <Image
+                src={service.img}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+              {/* Plus Button */}
+              <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 4V16M4 10H16" stroke="#262121" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+
+              {/* Bottom Text */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-white text-xl font-medium mb-2">{service.title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{service.desc}</p>
               </div>
             </div>
           ))}

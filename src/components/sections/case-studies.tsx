@@ -1,58 +1,60 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import Image from "next/image";
 
 export function CaseStudies() {
   const cases = [
     {
-      title: "Fintech Platform Redesign",
-      category: "UX/UI & Web Development",
-      metrics: ["+150% User Retention", "3x Faster Load Time"],
-      color: "bg-blue-100"
+      tag: "Healthcare",
+      title: "Making an Impact: Transforming a Healthcare Platform's Rebuild",
+      img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "HealthTech AI Dashboard",
-      category: "Product Design",
-      metrics: ["Zero Learning Curve", "Award Winning UI"],
-      color: "bg-green-100"
-    }
+      tag: "Startup",
+      title: "Optimizing Conversions: A Tech Startup's Leap",
+      img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80",
+    },
   ];
 
   return (
-    <section className="py-24 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-4 max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
-              Recent <span className="text-brand">Victories.</span>
+    <section id="case-studies" className="py-24 md:py-32 px-8">
+      <div className="max-w-[1140px] mx-auto">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+          <div className="flex flex-col gap-3">
+            <span className="inline-flex self-start items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">
+              Case Study
+            </span>
+            <h2 className="text-3xl md:text-[42px] font-medium text-foreground leading-[1.25]">
+              Client Success Through{" "}
+              <span className="block">Our Solutions</span>
             </h2>
-            <p className="text-lg text-slate-600">
-              We design digital products that solve complex problems and drive measurable results.
-            </p>
           </div>
-          <button className="flex items-center gap-2 font-semibold text-brand hover:text-brand-hover transition-colors">
-            View All Work <ArrowRight className="w-5 h-5" />
-          </button>
+          <a
+            href="#"
+            className="inline-flex items-center px-5 py-2 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary-hover transition-colors"
+          >
+            Explore All
+          </a>
         </div>
 
+        {/* Case Study Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {cases.map((c, i) => (
             <div key={i} className="group cursor-pointer">
-              <div className={`aspect-4/3 rounded-3xl ${c.color} overflow-hidden mb-6 relative`}>
-                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-300" />
-                {/* Placeholder for real case study image */}
-                <div className="absolute inset-8 bg-white/40 rounded-2xl shadow-xl transform translate-y-12 group-hover:translate-y-8 transition-transform duration-500"></div>
+              <div className="relative aspect-[4/3] rounded-[20px] overflow-hidden mb-5">
+                <Image
+                  src={c.img}
+                  alt={c.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
-              <div className="space-y-3">
-                <div className="text-sm font-semibold text-brand tracking-wider uppercase">{c.category}</div>
-                <h3 className="text-2xl font-bold text-slate-900">{c.title}</h3>
-                <div className="flex gap-4">
-                  {c.metrics.map((m, idx) => (
-                    <span key={idx} className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <span className="inline-flex items-center px-3 py-1 bg-primary rounded text-white text-xs font-medium uppercase tracking-[0.5px] mb-3">
+                {c.tag}
+              </span>
+              <h3 className="text-xl md:text-2xl font-medium text-foreground leading-tight">
+                {c.title}
+              </h3>
             </div>
           ))}
         </div>

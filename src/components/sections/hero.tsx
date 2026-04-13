@@ -1,56 +1,71 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import Image from "next/image";
 
 export function Hero() {
+  const images = [
+    { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80", alt: "Team collaborating", width: 355, height: 355, rounded: "rounded-full" },
+    { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80", alt: "Professional smiling", width: 318, height: 355, rounded: "rounded-full" },
+    { src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80", alt: "Woman with coffee", width: 355, height: 355, rounded: "rounded-full" },
+    { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80", alt: "Man browsing tablet", width: 284, height: 355, rounded: "rounded-[24px]" },
+    { src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80", alt: "Team discussing", width: 458, height: 355, rounded: "rounded-[24px]" },
+  ];
+
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-        
-        {/* Left Content */}
-        <div className="w-full lg:w-1/2 space-y-8 z-10">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#FFF4ED] text-brand text-sm font-bold tracking-wide uppercase">
-            Business & Solution
+    <section className="relative flex items-center justify-center pt-[180px] pb-[120px] px-8 overflow-hidden">
+      <div className="w-full max-w-[1140px]">
+        {/* Text Content */}
+        <div className="flex flex-col gap-8 mb-16">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <div className="inline-flex self-start items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">
+                Business &amp; Solution
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-medium text-foreground leading-[1.0] tracking-tight">
+                Flexible Solutions for{" "}
+                <span className="block">Modern Business</span>
+              </h1>
+            </div>
+            <p className="max-w-[700px] text-foreground text-base md:text-[17px] font-medium leading-7">
+              Delivering bespoke, outcome-focused solutions that enhance workflows, augment
+              productivity and expedite corporate expansion.
+            </p>
           </div>
-
-          <h1 className="text-5xl md:text-[72px] font-extrabold tracking-tight text-foreground leading-[1.05]">
-            Flexible Solutions for <span className="block">Modern Business</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted leading-relaxed max-w-xl font-medium">
-            Delivering bespoke, outcome-focused solutions that enhance workflows, augment productivity and expedite corporate expansion.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-            <Button variant="primary" size="lg" className="w-full sm:w-auto">
+          <div className="flex items-center gap-4">
+            <a
+              href="#contact"
+              className="flex items-center justify-center h-[50px] w-[130px] bg-primary text-white text-[15px] font-medium rounded-full hover:bg-primary-hover transition-colors"
+            >
               Let&apos;s Talk
-            </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-white">
+            </a>
+            <a
+              href="#services"
+              className="flex items-center justify-center h-[50px] w-[130px] bg-warm-bg text-primary text-[15px] font-medium rounded-full border border-primary hover:bg-primary/5 transition-colors"
+            >
               Learn More
-            </Button>
-          </div>
-        </div>
-        
-        {/* Right Visual Element (Mocking Flexio's curved images) */}
-        <div className="w-full lg:w-1/2 relative h-[500px] md:h-[600px] flex items-center justify-center">
-          {/* Main big block */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[85%] h-[85%] bg-brand/10 rounded-[48px] overflow-hidden border border-brand/20 shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80" alt="Team collaborating" className="w-full h-full object-cover opacity-90 mix-blend-multiply" />
-          </div>
-          
-          {/* Floating overlapping elements */}
-          <div className="absolute left-0 bottom-16 w-48 h-48 bg-white p-2 rounded-3xl shadow-xl animate-float">
-            <div className="w-full h-full bg-blue-50 rounded-2xl overflow-hidden relative">
-               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80" alt="Chart" className="w-full h-full object-cover" />
-            </div>
-          </div>
-          
-          <div className="absolute right-12 -top-4 w-32 h-32 bg-white p-2 rounded-full shadow-xl animate-float" style={{ animationDelay: '1s' }}>
-            <div className="w-full h-full bg-brand/20 rounded-full overflow-hidden relative">
-               <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80" alt="Abstract" className="w-full h-full object-cover" />
-            </div>
+            </a>
           </div>
         </div>
 
+        {/* Image Strip */}
+        <div className="flex items-center gap-3 overflow-x-auto pb-4 -mx-8 px-8 scrollbar-hide">
+          {images.map((img, i) => (
+            <div
+              key={i}
+              className={`relative shrink-0 overflow-hidden ${img.rounded}`}
+              style={{ width: img.width, height: img.height }}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 200px, 400px"
+              />
+            </div>
+          ))}
+          {/* Decorative colored blocks */}
+          <div className="shrink-0 w-[80px] h-[355px] bg-primary rounded-[24px]" />
+          <div className="shrink-0 w-[80px] h-[355px] bg-[#4ecdc4] rounded-full" />
+        </div>
       </div>
     </section>
   );
