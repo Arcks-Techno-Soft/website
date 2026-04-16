@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/sections/hero";
 import { LogoCloud } from "@/components/sections/logo-cloud";
-import { Challenges } from "@/components/sections/challenges";
+// import { Challenges } from "@/components/sections/challenges";
 import { Services } from "@/components/sections/services";
 import { Process } from "@/components/sections/process";
 import { Stats } from "@/components/sections/stats";
@@ -15,10 +15,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow">
+      <main className="grow">
         <Hero />
         <LogoCloud />
-        <Challenges />
+        {/* <Challenges /> */}
         <Services />
         <Process />
         <Stats />

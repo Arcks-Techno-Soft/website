@@ -50,7 +50,7 @@ export function Challenges() {
 
         {/* Right Image */}
         <div className="w-full lg:w-1/2 relative">
-          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
+          <div className="relative aspect-4/3 rounded-3xl overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
               alt="Woman working with coffee"
