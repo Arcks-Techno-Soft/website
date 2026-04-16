@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -70,15 +71,16 @@ export function Footer() {
         </div>
 
         {/* Large Logo */}
-        <div className="flex items-center gap-4 mt-8">
-          {/* Logo Icon */}
-          <div className="relative w-[80px] h-[80px] md:w-[120px] md:h-[120px]">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-foreground rounded-b-full" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[62%] h-1/2 bg-primary rounded-t-full" />
-          </div>
-          {/* Logo Text */}
+        <div className="flex items-center gap-4 md:gap-6 mt-8">
+          <Image
+            src="/arcks-logo.png"
+            alt=""
+            width={1368}
+            height={1188}
+            className="h-[80px] md:h-[140px] lg:h-[180px] w-auto"
+          />
           <span className="text-[80px] md:text-[140px] lg:text-[180px] font-medium text-foreground leading-none tracking-tight">
-            Flexio
+            ARCKS
           </span>
         </div>
       </div>

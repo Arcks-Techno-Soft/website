@@ -38,13 +38,13 @@ export function Process() {
           <div className="flex items-center gap-4">
             <a
               href="#contact"
-              className="flex items-center justify-center h-[50px] w-[130px] bg-primary text-white text-[15px] font-medium rounded-full hover:bg-primary-hover transition-colors"
+              className="flex items-center justify-center h-[50px] w-[130px] bg-primary text-primary-foreground text-[15px] font-medium rounded-full hover:bg-primary/90 transition-colors"
             >
               Let&apos;s Talk
             </a>
             <a
               href="#services"
-              className="flex items-center justify-center h-[50px] w-[130px] bg-warm-bg text-primary text-[15px] font-medium rounded-full border border-primary hover:bg-primary/5 transition-colors"
+              className="flex items-center justify-center h-[50px] w-[130px] bg-background text-primary text-[15px] font-medium rounded-full border border-primary hover:bg-primary/5 transition-colors"
             >
               Learn More
             </a>
@@ -56,7 +56,7 @@ export function Process() {
           {steps.map((step) => (
             <div
               key={step.num}
-              className="bg-card-bg rounded-2xl p-8 flex items-start gap-6"
+              className="bg-accent rounded-2xl p-8 flex items-start gap-6 border border-border"
             >
               <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shrink-0">
                 <span className="text-white text-lg font-medium">{step.num}</span>

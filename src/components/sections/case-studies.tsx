@@ -30,7 +30,7 @@ export function CaseStudies() {
           </div>
           <a
             href="#"
-            className="inline-flex items-center px-5 py-2 bg-primary text-white text-sm font-medium rounded-full hover:bg-primary-hover transition-colors"
+            className="inline-flex items-center px-5 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-colors"
           >
             Explore All
           </a>

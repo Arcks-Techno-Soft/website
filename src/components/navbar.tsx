@@ -1,24 +1,59 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
+
+// How far the user must scroll past the top before the navbar starts responding
+// to direction changes. While within this band, the navbar is always shown
+// (that's the "hero section" zone).
+const HERO_ZONE_PX = 200;
+
+// Jitter threshold — small wheel ticks won't trigger hide/show flips.
+const DIFF_THRESHOLD = 5;
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    const diff = current - previous;
+
+    // Always visible within the hero zone or if the mobile menu is open
+    if (current < HERO_ZONE_PX || mobileOpen) {
+      setHidden(false);
+      return;
+    }
+
+    if (diff > DIFF_THRESHOLD) setHidden(true);        // scrolling down → hide
+    else if (diff < -DIFF_THRESHOLD) setHidden(false); // scrolling up → show
+  });
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pt-5 px-6">
+    <motion.header
+      initial={{ y: 0 }}
+      animate={{ y: hidden ? "-120%" : "0%" }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pt-5 px-6"
+    >
       <div className="w-full max-w-[1280px]">
-        <nav className="relative flex items-center h-16 bg-nav-bg rounded-full pl-6 pr-1.5 py-1.5 border border-nav-border">
+        <nav className="relative flex items-center h-16 bg-[#DCEDFA] rounded-full pl-6 pr-1.5 py-1.5 border border-border shadow-sm">
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            <div className="flex items-center gap-1.5">
-              <div className="relative w-8 h-8">
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-4 bg-foreground rounded-b-full" />
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-4 bg-primary rounded-t-full" />
-              </div>
+          <Link href="/" className="flex items-center shrink-0" aria-label="ARCKS home">
+            <div className="flex items-center">
+              <Image
+                src="/arcks-logo.png"
+                alt=""
+                width={1368}
+                height={1188}
+                priority
+                className="h-9 w-auto"
+              />
               <span className="text-xl font-medium text-foreground tracking-tight">
-                Flexio
+                ARCKS
               </span>
             </div>
           </Link>
@@ -43,9 +78,19 @@ export function Navbar() {
           <div className="hidden md:flex items-center ml-auto">
             <Link
               href="#contact"
-              className="flex items-center justify-center h-[50px] w-[140px] bg-primary text-white text-[14px] font-medium rounded-full hover:bg-primary-hover transition-colors"
+              className="group relative block h-[50px] w-[140px] bg-primary rounded-full overflow-hidden"
             >
-              Let&apos;s Talk
+              <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
+                <span className="h-[50px] flex items-center justify-center text-primary-foreground text-[14px] font-bold">
+                  Let&apos;s Talk
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-[50px] flex items-center justify-center text-primary-foreground text-[14px] font-bold"
+                >
+                  Let&apos;s Talk
+                </span>
+              </div>
             </Link>
           </div>
 
@@ -68,14 +113,14 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden mt-2 bg-nav-bg rounded-2xl p-6 border border-nav-border">
+          <div className="md:hidden mt-2 bg-secondary rounded-2xl p-6 border border-border shadow-sm">
             <div className="flex flex-col gap-4">
               <Link href="#services" className="text-[15px] font-medium text-foreground" onClick={() => setMobileOpen(false)}>Services</Link>
               <Link href="#about-us" className="text-[15px] font-medium text-foreground" onClick={() => setMobileOpen(false)}>About Us</Link>
               <Link href="#case-studies" className="text-[15px] font-medium text-foreground" onClick={() => setMobileOpen(false)}>Case Studies</Link>
               <Link
                 href="#contact"
-                className="flex items-center justify-center h-[50px] bg-primary text-white text-[14px] font-medium rounded-full mt-2"
+                className="flex items-center justify-center h-[50px] bg-primary text-primary-foreground text-[14px] font-medium rounded-full mt-2"
                 onClick={() => setMobileOpen(false)}
               >
                 Let&apos;s Talk
@@ -84,6 +129,6 @@ export function Navbar() {
           </div>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }
