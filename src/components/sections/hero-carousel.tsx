@@ -27,11 +27,14 @@ export function HeroCarousel() {
   const x = useTransform(scrollY, (y) => -((y * SCROLL_FACTOR) % COPY_WIDTH));
 
   return (
-    <div className="overflow-hidden">
-      {/* Outer wrapper: scroll-position parallax (JS transform) */}
-      <motion.div style={{ x }}>
-        {/* Inner wrapper: CSS marquee auto-play — runs from page load, independent of scroll */}
-        <div className="flex animate-marquee" style={{ width: "max-content" }}>
+    // Container height tracks the scaled image height so there's no empty space below on mobile.
+    <div className="overflow-hidden h-[213px] md:h-[355px]">
+      {/* Mobile: visually shrink the whole strip to 60% while preserving layout math */}
+      <div className="origin-top-left scale-[0.6] md:scale-100">
+        {/* Outer wrapper: scroll-position parallax (JS transform) */}
+        <motion.div style={{ x }}>
+          {/* Inner wrapper: CSS marquee auto-play — runs from page load, independent of scroll */}
+          <div className="flex animate-marquee" style={{ width: "max-content" }}>
           {[0, 1].map((copyIndex) => (
             <div key={copyIndex} className="flex gap-3 shrink-0" style={{ paddingRight: GAP }}>
               {images.map((img, i) => (
@@ -55,6 +58,7 @@ export function HeroCarousel() {
           ))}
         </div>
       </motion.div>
+      </div>
     </div>
   );
 }
