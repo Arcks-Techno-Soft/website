@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CTA() {
   return (
-    <section id="contact" className="py-16 md:py-24 px-8">
+    <section id="contact" className="py-12 md:py-20 px-8">
       <div className="max-w-[1140px] mx-auto">
         <div className="relative bg-primary rounded-[32px] overflow-hidden px-8 py-20 md:py-28">
           {/* Decorative shapes */}

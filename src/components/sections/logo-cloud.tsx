@@ -61,7 +61,7 @@ const logos: Logo[] = [
 
 export function LogoCloud() {
   return (
-    <section className="bg-primary py-20 overflow-hidden">
+    <section className="bg-primary py-10 md:py-12 overflow-hidden">
       {/* Heading — constrained to container width */}
       <div className="max-w-[1140px] mx-auto px-8 mb-12">
         <div className="flex flex-col items-center gap-3">

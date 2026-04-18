@@ -17,7 +17,7 @@ export function Testimonials() {
   ];
 
   return (
-    <section className="py-24 md:py-32 px-8">
+    <section className="py-12 md:py-20 px-8">
       <div className="max-w-[1140px] mx-auto">
         {/* Heading */}
         <div className="flex flex-col items-center gap-3 mb-14">

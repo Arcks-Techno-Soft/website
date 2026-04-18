@@ -15,7 +15,7 @@ export function CaseStudies() {
   ];
 
   return (
-    <section id="case-studies" className="py-24 md:py-32 px-8">
+    <section id="case-studies" className="py-12 md:py-20 px-8">
       <div className="max-w-[1140px] mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
