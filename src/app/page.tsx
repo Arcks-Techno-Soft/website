@@ -8,7 +8,7 @@ import { VideoShowcase } from "@/components/sections/video-showcase";
 import { Stats } from "@/components/sections/stats";
 import { Industries } from "@/components/sections/industries";
 import { Testimonials } from "@/components/sections/testimonials";
-import { CaseStudies } from "@/components/sections/case-studies";
+// import { CaseStudies } from "@/components/sections/case-studies";
 import { CTA } from "@/components/sections/cta";
 import { Footer } from "@/components/footer";
 import { Challenges } from "@/components/sections/challenges";
@@ -28,7 +28,7 @@ export default function Home() {
           <Stats />
           <Industries />
           <Testimonials />
-          <CaseStudies />
+          {/* <CaseStudies /> */}
           <CTA />
         </div>
       </main>
