@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export function Challenges() {
   const painPoints = [
@@ -7,14 +10,8 @@ export function Challenges() {
     { title: "Limited Support", desc: "Wasting valuable time and resources." },
   ];
 
-  const floatingTags = [
-    { label: "LOST OPPORTUNITIES", color: "bg-[#fe6037]", position: "top-8 right-8" },
-    { label: "LACK OF EXPERTISE", color: "bg-[#f0a060]", position: "top-24 right-4" },
-    { label: "LIMITED SUCCESS", color: "bg-[#e8c040]", position: "top-40 right-12" },
-  ];
-
   return (
-    <section id="about-us" className="py-24 md:py-32 px-8">
+    <section id="about-us" className="py-24 md:py-28 px-8">
       <div className="max-w-[1140px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         {/* Left Text */}
         <div className="w-full lg:w-1/2 flex flex-col gap-6">
@@ -50,24 +47,30 @@ export function Challenges() {
 
         {/* Right Image */}
         <div className="w-full lg:w-1/2 relative">
-          <div className="relative aspect-4/3 rounded-3xl overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
-              alt="Woman working with coffee"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
-          {/* Floating Tags */}
-          {floatingTags.map((tag, i) => (
-            <div
-              key={i}
-              className={`absolute ${tag.position} ${tag.color} text-white text-xs font-medium px-4 py-2 rounded-full shadow-lg`}
+          <div className="relative aspect-[692/801] rounded-3xl overflow-hidden">
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.25 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: false, amount: 0.35 }}
             >
-              {tag.label}
-            </div>
-          ))}
+              <Image
+                src="/images/problem-girl.jpg"
+                alt="Professional reviewing work at laptop"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </motion.div>
+          </div>
+          <Image
+            src="/images/problem-tag.png"
+            alt="Challenges: lost opportunities, lack of expertise, limited success"
+            width={177}
+            height={182}
+            className="absolute -top-4 -right-4 md:-top-6 md:-right-8 w-[140px] md:w-[180px] h-auto"
+          />
         </div>
       </div>
     </section>

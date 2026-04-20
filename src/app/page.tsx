@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { CaseStudies } from "@/components/sections/case-studies";
 import { CTA } from "@/components/sections/cta";
 import { Footer } from "@/components/footer";
+import { Challenges } from "@/components/sections/challenges";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
       <main className="grow">
         <Hero />
         <LogoCloud />
-        {/* <Challenges /> */}
+        <Challenges />
         <Services />
         <Process />
         <VideoShowcase />
