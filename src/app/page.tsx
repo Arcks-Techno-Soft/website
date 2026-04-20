@@ -23,11 +23,13 @@ export default function Home() {
         <Services />
         <Process />
         <VideoShowcase />
-        <Stats />
-        <Industries />
-        <Testimonials />
-        <CaseStudies />
-        <CTA />
+        <div className="relative z-10 bg-background rounded-t-[40px] -mt-[100vh] md:rounded-t-[60px]">
+          <Stats />
+          <Industries />
+          <Testimonials />
+          <CaseStudies />
+          <CTA />
+        </div>
       </main>
       <Footer />
     </>

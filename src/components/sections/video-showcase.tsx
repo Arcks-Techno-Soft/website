@@ -11,19 +11,29 @@ export function VideoShowcase() {
     offset: ["start start", "end end"],
   });
 
+  const text1Y = useTransform(
+    scrollYProgress,
+    [0, 0.05, 1],
+    [50, 0, 0],
+  );
   const text1Opacity = useTransform(
     scrollYProgress,
-    [0, 0.08, 0.42, 0.5],
-    [0, 1, 1, 0],
+    [0, 0.2995, 0.3],
+    [1, 1, 0],
+  );
+  const text2Y = useTransform(
+    scrollYProgress,
+    [0.3, 0.35, 1],
+    [50, 0, 0],
   );
   const text2Opacity = useTransform(
     scrollYProgress,
-    [0.5, 0.58, 0.92, 1],
-    [0, 1, 1, 1],
+    [0.3, 0.3005, 0.4995, 0.5],
+    [0, 1, 1, 0],
   );
 
   return (
-    <section ref={sectionRef} className="relative h-[250vh]">
+    <section ref={sectionRef} className="relative z-0 h-[300vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -38,7 +48,7 @@ export function VideoShowcase() {
         <div className="absolute inset-0 bg-black/50" />
 
         <motion.h2
-          style={{ opacity: text1Opacity }}
+          style={{ opacity: text1Opacity, y: text1Y }}
           className="absolute inset-0 z-10 flex items-center justify-center px-8 text-center text-white font-normal leading-[1.15] text-xl md:text-3xl lg:text-5xl text-balance tracking-[-0.02em]"
         >
           <span className="max-w-[900px]">
@@ -47,7 +57,7 @@ export function VideoShowcase() {
         </motion.h2>
 
         <motion.h2
-          style={{ opacity: text2Opacity }}
+          style={{ opacity: text2Opacity, y: text2Y }}
           className="absolute inset-0 z-10 flex items-center justify-center px-8 text-center text-white font-normal leading-[1.15] text-xl md:text-3xl lg:text-5xl text-balance tracking-[-0.02em]"
         >
           <span className="max-w-[900px]">
