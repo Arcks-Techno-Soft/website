@@ -6,35 +6,41 @@ export function Footer() {
   const socialLinks = ["Instagram", "Linkedin", "Twitter", "Facebook"];
 
   return (
-    <footer className="pt-10 pb-24 px-8 overflow-hidden">
+    <footer className="relative z-10 -mt-10 md:-mt-[60px] bg-[#F5EEE1] rounded-t-[40px] md:rounded-t-[60px] pt-16 md:pt-24 px-8 overflow-hidden">
       <div className="max-w-[1140px] mx-auto">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row gap-12 md:gap-5 pt-12 mb-8">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-8 pb-16">
           {/* Contact Info */}
           <div className="flex-1 flex flex-col gap-2">
-            <p className="text-foreground text-base font-medium leading-7">Email Us</p>
-            <p className="text-foreground text-3xl md:text-[40px] font-medium leading-tight">
-              Hello@flexio.co
+            <p className="text-foreground text-[15px] font-medium">Email Us</p>
+            <p className="text-foreground text-3xl md:text-[40px] font-medium leading-[1] tracking-tight">
+              arckstechnosoft@gmail.com
             </p>
-            <p className="text-foreground text-sm font-normal leading-relaxed mt-1">
-              &copy; 2024 Design &amp; Developed Amani
-            </p>
-            <Link href="#" className="text-foreground text-[15px] font-medium mt-1">
+            <div className="flex flex-wrap items-center gap-x-1 mt-3">
+              <p className="text-foreground text-[15px] font-medium">&copy; 2026</p>
+              <p className="text-foreground text-[15px] font-medium">
+                All rights reserved.
+              </p>
+            </div>
+            <Link
+              href="#"
+              className="text-foreground text-[15px] font-medium mt-4 hover:text-primary transition-colors self-start"
+            >
               Privacy Policy
             </Link>
           </div>
 
           {/* Link Columns */}
-          <div className="flex-1 flex gap-6">
+          <div className="flex gap-10 md:gap-14 md:justify-end">
             {/* Page */}
-            <div className="flex-1 flex flex-col gap-2">
-              <p className="text-foreground text-base font-medium leading-7">Page</p>
-              <div className="flex flex-col">
+            <div className="flex flex-col gap-3 min-w-[100px]">
+              <p className="text-foreground text-[15px] font-medium">Page</p>
+              <div className="flex flex-col gap-2">
                 {pageLinks.map((link) => (
                   <Link
                     key={link}
                     href="#"
-                    className="text-foreground text-[15px] font-medium py-1 hover:text-primary transition-colors"
+                    className="text-foreground text-[15px] font-medium hover:text-primary transition-colors"
                   >
                     {link}
                   </Link>
@@ -43,14 +49,14 @@ export function Footer() {
             </div>
 
             {/* Social */}
-            <div className="flex-1 flex flex-col gap-2">
-              <p className="text-foreground text-base font-medium leading-7">Social</p>
-              <div className="flex flex-col">
+            <div className="flex flex-col gap-3 min-w-[100px]">
+              <p className="text-foreground text-[15px] font-medium">Social</p>
+              <div className="flex flex-col gap-2">
                 {socialLinks.map((link) => (
                   <Link
                     key={link}
                     href="#"
-                    className="text-foreground text-[15px] font-medium py-1 hover:text-primary transition-colors"
+                    className="text-foreground text-[15px] font-medium hover:text-primary transition-colors"
                   >
                     {link}
                   </Link>
@@ -59,27 +65,29 @@ export function Footer() {
             </div>
 
             {/* Studio */}
-            <div className="flex-1 flex flex-col gap-2">
-              <p className="text-foreground text-base font-medium leading-7">Studio</p>
-              <p className="text-foreground text-base font-normal leading-7">
-                201M Suite, N Broad<br />
-                St 651, Middletown,<br />
+            <div className="flex flex-col gap-3 min-w-[160px]">
+              <p className="text-foreground text-[15px] font-medium">Studio</p>
+              <p className="text-foreground text-[15px] font-medium leading-7">
+                201M Suite, N Broad
+                <br />
+                St 651, Middletown,
+                <br />
                 Delaware, USA
               </p>
             </div>
           </div>
         </div>
 
-        {/* Large Logo */}
-        <div className="flex items-center gap-4 md:gap-6 mt-8">
+        {/* Oversized brand mark — centered, intentionally clipped at the bottom */}
+        <div className="flex items-start justify-center gap-2 md:gap-4 mb-[-10px] md:mb-[-20px] lg:mb-[-30px]">
           <Image
             src="/arcks-logo.png"
             alt=""
-            width={1368}
-            height={1188}
-            className="h-[80px] md:h-[140px] lg:h-[180px] w-auto"
+            width={1468}
+            height={1288}
+            className="h-[100px] md:h-[160px] lg:h-[220px] w-auto shrink-0"
           />
-          <span className="text-[80px] md:text-[140px] lg:text-[180px] font-medium text-foreground leading-none tracking-tight">
+          <span className="text-[100px] md:text-[160px] lg:text-[220px] font-medium text-foreground leading-none tracking-tight">
             ARCKS
           </span>
         </div>
