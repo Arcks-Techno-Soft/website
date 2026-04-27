@@ -38,8 +38,8 @@ export function Process() {
             </h2>
           </div>
           <div className="flex items-center justify-center lg:justify-start gap-4">
-            <a
-              href="#contact"
+            <Link
+              href="/contact-us"
               className="group relative block h-[50px] w-[130px] bg-primary rounded-full overflow-hidden"
             >
               <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
@@ -53,7 +53,7 @@ export function Process() {
                   Let&apos;s Talk
                 </span>
               </div>
-            </a>
+            </Link>
             <Link
               href="/about-us"
               className="group relative block h-[50px] w-[130px] bg-background rounded-full border border-primary overflow-hidden"

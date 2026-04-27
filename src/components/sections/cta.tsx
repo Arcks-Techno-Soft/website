@@ -33,8 +33,8 @@ export function CTA() {
 
             {/* CTAs */}
             <div className="flex gap-3 items-center">
-              <a
-                href="#contact"
+              <Link
+                href="/contact-us"
                 className="group relative block h-[54px] w-[140px] bg-[#262121] rounded-full overflow-hidden"
               >
                 <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
@@ -48,7 +48,7 @@ export function CTA() {
                     Let&apos;s Talk
                   </span>
                 </div>
-              </a>
+              </Link>
               <Link
                 href="/about-us"
                 className="group relative block h-[54px] w-[140px] bg-[#F5EEE1] rounded-full overflow-hidden"

@@ -164,7 +164,7 @@ export function Navbar() {
           {/* CTA Button */}
           <div ref={ctaRef} className="hidden md:flex items-center ml-auto">
             <Link
-              href="#contact"
+              href="/contact-us"
               className="group relative block h-[50px] w-[140px] bg-primary rounded-full overflow-hidden"
             >
               <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
@@ -314,10 +314,10 @@ export function Navbar() {
               </div>
 
               <Link href="/about-us" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>About Us</Link>
-              <a href="#contact" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>Contact</a>
+              <Link href="/contact-us" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>Contact</Link>
 
               <Link
-                href="#contact"
+                href="/contact-us"
                 className="flex items-center justify-center h-[50px] bg-primary text-primary-foreground text-[14px] font-medium rounded-full mt-2"
                 onClick={closeMobile}
               >
