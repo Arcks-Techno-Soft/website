@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative pt-[180px] pb-[120px] overflow-hidden">
+    <section id="home" className="relative pt-[180px] pb-[120px] overflow-hidden">
       {/* Text content — constrained to container */}
       <div className="max-w-[1140px] mx-auto px-2">
         <div className="flex flex-col gap-8 mb-16 items-center md:items-start">

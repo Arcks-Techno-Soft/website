@@ -31,7 +31,7 @@ export function Testimonials() {
   const loop = [...reviews, ...reviews];
 
   return (
-    <section className="mt-16 md:mt-24 py-12 md:py-20 overflow-hidden">
+    <section id="testimonials" className="mt-16 md:mt-24 py-12 md:py-20 overflow-hidden">
       <div className="max-w-[1140px] mx-auto px-8">
         <div className="flex flex-col items-center gap-3 mb-14">
           <span className="inline-flex items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">

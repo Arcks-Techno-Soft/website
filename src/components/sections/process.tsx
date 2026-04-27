@@ -23,7 +23,7 @@ export function Process() {
   ];
 
   return (
-    <section className="py-12 md:py-20 px-8">
+    <section id="our-approach" className="py-12 md:py-20 px-8">
       <div className="max-w-[1140px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-[120px]">
         {/* Left: Title + CTAs */}
         <div className="w-full lg:w-[460px] flex flex-col gap-10 lg:sticky lg:top-32 lg:self-start">

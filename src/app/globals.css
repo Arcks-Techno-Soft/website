@@ -148,10 +148,20 @@
   * {
     border-color: var(--color-border);
   }
+  html {
+    scroll-behavior: smooth;
+    /* Offset for the fixed navbar so anchored sections aren't hidden behind it */
+    scroll-padding-top: 100px;
+  }
   body {
     background: var(--color-background);
     color: var(--color-foreground);
     letter-spacing: var(--tracking-normal);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
