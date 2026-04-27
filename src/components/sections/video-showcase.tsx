@@ -1,39 +1,36 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
+
+const TEXTS = [
+  "Expert advice to streamline operations and accelerate growth",
+  "Tailored to your brand’s needs & designed to enhance your business",
+];
 
 export function VideoShowcase() {
   const sectionRef = useRef<HTMLElement>(null);
+  // null = no text shown (the brief gap when entering the section)
+  const [activeText, setActiveText] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  const text1Y = useTransform(
-    scrollYProgress,
-    [0, 0.05, 1],
-    [50, 0, 0],
-  );
-  const text1Opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2995, 0.3],
-    [1, 1, 0],
-  );
-  const text2Y = useTransform(
-    scrollYProgress,
-    [0.3, 0.35, 1],
-    [50, 0, 0],
-  );
-  const text2Opacity = useTransform(
-    scrollYProgress,
-    [0.3, 0.3005, 0.4995, 0.5],
-    [0, 1, 1, 0],
-  );
+  useMotionValueEvent(scrollYProgress, "change", (p) => {
+    if (p < 0.1) setActiveText(null);
+    else if (p < 0.5) setActiveText(0);
+    else setActiveText(1);
+  });
 
   return (
-    <section ref={sectionRef} className="relative z-0 h-[300vh]">
+    <section ref={sectionRef} className="relative z-0 h-[500vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -45,26 +42,23 @@ export function VideoShowcase() {
         >
           <source src="/videos/video-1.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
 
-        <motion.h2
-          style={{ opacity: text1Opacity, y: text1Y }}
-          className="absolute inset-0 z-10 flex items-center justify-center px-8 text-center text-white font-normal leading-[1.15] text-xl md:text-3xl lg:text-5xl text-balance tracking-[-0.02em]"
-        >
-          <span className="max-w-[900px]">
-            Expert advice to streamline operations and accelerate growth
-          </span>
-        </motion.h2>
-
-        <motion.h2
-          style={{ opacity: text2Opacity, y: text2Y }}
-          className="absolute inset-0 z-10 flex items-center justify-center px-8 text-center text-white font-normal leading-[1.15] text-xl md:text-3xl lg:text-5xl text-balance tracking-[-0.02em]"
-        >
-          <span className="max-w-[900px]">
-            Tailored to your brand&apos;s needs &amp; designed to enhance your
-            business
-          </span>
-        </motion.h2>
+        <div className="absolute inset-0 z-10">
+          <AnimatePresence mode="wait">
+            {activeText !== null && (
+              <motion.h2
+                key={activeText}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 flex items-center justify-center px-8 text-center text-white font-semibold leading-[1.15] text-xl md:text-3xl lg:text-5xl text-balance tracking-[-0.02em]"
+              >
+                <span className="max-w-[900px]">{TEXTS[activeText]}</span>
+              </motion.h2>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
