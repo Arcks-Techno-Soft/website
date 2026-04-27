@@ -39,8 +39,8 @@ export function Hero() {
                 </span>
               </div>
             </a>
-            <a
-              href="#services"
+            <Link
+              href="/about-us"
               className="group relative block h-[50px] w-[130px] bg-transparent rounded-full border border-primary overflow-hidden"
             >
               <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
@@ -54,7 +54,7 @@ export function Hero() {
                   Learn More
                 </span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

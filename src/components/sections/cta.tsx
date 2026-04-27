@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type DecorItem =
   | { type: "svg"; src: string; alt: string; spin?: boolean }
@@ -48,8 +49,8 @@ export function CTA() {
                   </span>
                 </div>
               </a>
-              <a
-                href="#services"
+              <Link
+                href="/about-us"
                 className="group relative block h-[54px] w-[140px] bg-[#F5EEE1] rounded-full overflow-hidden"
               >
                 <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
@@ -63,7 +64,7 @@ export function CTA() {
                     Learn More
                   </span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
