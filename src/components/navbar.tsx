@@ -156,9 +156,9 @@ export function Navbar() {
               </button>
             </div>
 
-            <a href="#about-us" className="text-[15px] font-medium text-foreground hover:text-primary transition-colors">
+            <Link href="/about-us" className="text-[15px] font-medium text-foreground hover:text-primary transition-colors">
               About Us
-            </a>
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -313,7 +313,7 @@ export function Navbar() {
                 )}
               </div>
 
-              <a href="#about-us" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>About Us</a>
+              <Link href="/about-us" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>About Us</Link>
               <a href="#contact" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>Contact</a>
 
               <Link
