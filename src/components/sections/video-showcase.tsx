@@ -30,7 +30,7 @@ export function VideoShowcase() {
   });
 
   return (
-    <section ref={sectionRef} className="relative z-0 h-[500vh]">
+    <section ref={sectionRef} className="relative z-0 h-[250vh] md:h-[500vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -43,7 +43,7 @@ export function VideoShowcase() {
           <source src="/videos/video-1.mp4" type="video/mp4" />
         </video>
 
-        <div className="absolute inset-0 z-10">
+        <div className="hidden md:block absolute inset-0 z-10">
           <AnimatePresence mode="wait">
             {activeText !== null && (
               <motion.h2
