@@ -26,27 +26,47 @@ export function Process() {
     <section id="our-approach" className="py-12 md:py-20 px-8">
       <div className="max-w-[1140px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-[120px]">
         {/* Left: Title + CTAs */}
-        <div className="w-full lg:w-[460px] flex flex-col gap-10 lg:sticky lg:top-32 lg:self-start">
-          <div className="flex flex-col gap-3">
-            <span className="inline-flex self-start items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">
+        <div className="w-full lg:w-[460px] flex flex-col gap-10 items-center lg:items-start lg:sticky lg:top-32 lg:self-start">
+          <div className="flex flex-col gap-3 items-center lg:items-start">
+            <span className="inline-flex self-center lg:self-start items-center px-2 py-1 bg-primary rounded text-white text-[13px] font-medium uppercase tracking-[1px]">
               Our Approach
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-[55px] font-medium text-foreground leading-[1.1]">
+            <h2 className="text-center lg:text-left text-3xl sm:text-4xl md:text-[55px] font-medium text-foreground leading-[1.1]">
               A Streamlined Process for Lasting Results
             </h2>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center lg:justify-start gap-4">
             <a
               href="#contact"
-              className="flex items-center justify-center h-[50px] w-[130px] bg-primary text-primary-foreground text-[15px] font-medium rounded-full hover:bg-primary/90 transition-colors"
+              className="group relative block h-[50px] w-[130px] bg-primary rounded-full overflow-hidden"
             >
-              Let&apos;s Talk
+              <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
+                <span className="h-[50px] flex items-center justify-center text-primary-foreground text-[15px] font-medium">
+                  Let&apos;s Talk
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-[50px] flex items-center justify-center text-primary-foreground text-[15px] font-medium"
+                >
+                  Let&apos;s Talk
+                </span>
+              </div>
             </a>
             <a
               href="#services"
-              className="flex items-center justify-center h-[50px] w-[130px] bg-background text-primary text-[15px] font-medium rounded-full border border-primary hover:bg-primary/5 transition-colors"
+              className="group relative block h-[50px] w-[130px] bg-background rounded-full border border-primary overflow-hidden"
             >
-              Learn More
+              <div className="flex flex-col motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:motion-safe:-translate-y-1/2">
+                <span className="h-[50px] flex items-center justify-center text-primary text-[15px] font-medium">
+                  Learn More
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-[50px] flex items-center justify-center text-primary text-[15px] font-medium"
+                >
+                  Learn More
+                </span>
+              </div>
             </a>
           </div>
         </div>
