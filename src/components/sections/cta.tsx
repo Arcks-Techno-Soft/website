@@ -69,7 +69,7 @@ export function CTA() {
         </div>
 
         {/* Decorative scrolling strip */}
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden mb-2 md:mb-14">
           <div
             className="flex gap-2.5 animate-marquee"
             style={{ width: "max-content" }}
