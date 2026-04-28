@@ -114,8 +114,8 @@ function ScallopedBadge({ color, children }: { color: string; children: ReactNod
         <circle cx="0" cy="0" r={baseR} fill={color} />
         {Array.from({ length: bumps }).map((_, i) => {
           const angle = (i / bumps) * 2 * Math.PI;
-          const cx = baseR * Math.cos(angle);
-          const cy = baseR * Math.sin(angle);
+          const cx = Number((baseR * Math.cos(angle)).toFixed(4));
+          const cy = Number((baseR * Math.sin(angle)).toFixed(4));
           return <circle key={i} cx={cx} cy={cy} r={bumpR} fill={color} />;
         })}
       </svg>
