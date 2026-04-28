@@ -1,6 +1,8 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { ReactLenis, useLenis } from "lenis/react";
 
 /**
  * Wraps the app with Lenis smooth scroll.
@@ -23,7 +25,23 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
         touchMultiplier: 1.5,
       }}
     >
+      <ScrollTopOnRouteChange />
       {children}
     </ReactLenis>
   );
+}
+
+// Lenis owns the scroll loop, so Next's default "scroll to top on route change"
+// fights with it and produces a jump halfway through the page. Snap Lenis to
+// the top instantly whenever the pathname changes.
+function ScrollTopOnRouteChange() {
+  const pathname = usePathname();
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!lenis) return;
+    lenis.scrollTo(0, { immediate: true, force: true });
+  }, [pathname, lenis]);
+
+  return null;
 }

@@ -1,7 +1,5 @@
-import { Navbar } from "@/components/navbar";
 import { Contact } from "@/components/sections/contact";
 import { CTA } from "@/components/sections/cta";
-import { Footer } from "@/components/footer";
 
 export const metadata = {
   title: "Contact Us | ARCKS",
@@ -12,12 +10,8 @@ export const metadata = {
 export default function ContactUsPage() {
   return (
     <>
-      <Navbar />
-      <main className="grow">
-        <Contact />
-        <CTA />
-      </main>
-      <Footer />
+      <Contact />
+      <CTA />
     </>
   );
 }

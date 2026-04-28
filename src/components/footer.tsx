@@ -6,7 +6,7 @@ export function Footer() {
   const socialLinks = ["Instagram", "Linkedin", "Twitter", "Facebook"];
 
   return (
-    <footer className="relative z-10 -mt-5 md:-mt-[60px] bg-[#F5EEE1] rounded-t-[40px] md:rounded-t-[60px] pt-16 md:pt-24 px-8 overflow-hidden">
+    <footer className="relative z-10 -mt-5 md:-mt-[60px] bg-[#dbedfa] rounded-t-[40px] md:rounded-t-[60px] pt-16 md:pt-24 px-8 overflow-hidden">
       <div className="max-w-[1140px] mx-auto">
         {/* Top Section */}
         <div className="flex flex-col-reverse md:flex-row gap-12 md:gap-8 pb-16">

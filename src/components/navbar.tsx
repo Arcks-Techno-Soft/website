@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 
@@ -18,14 +19,17 @@ const servicesPreview = [
   {
     title: "Custom software development",
     img: "/images/service-1.jpg",
+    href: "/services/custom-software-development",
   },
   {
     title: "Mobile & web app development",
     img: "/images/service-2.jpg",
+    href: "/services/mobile-web-app-development",
   },
   {
     title: "Cloud & DevOps solutions",
     img: "/images/service-3.jpg",
+    href: "/services/cloud-devops-solutions",
   },
 ];
 
@@ -35,6 +39,7 @@ export function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
 
   const navRef = useRef<HTMLElement>(null);
   const servicesTriggerRef = useRef<HTMLDivElement>(null);
@@ -59,6 +64,17 @@ export function Navbar() {
     closeTimeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
   };
   useEffect(() => cancelClose, []);
+
+  // Close any open menus on route change. Without this, clicking a link inside
+  // the hover dropdown leaves it open on the destination page (the cursor
+  // never "leaves" the trigger). Render-time comparison so React 19's
+  // set-state-in-effect lint stays happy.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
+    setServicesOpen(false);
+    setMobileOpen(false);
+  }
 
   useEffect(() => {
     const update = () => {
@@ -213,9 +229,10 @@ export function Navbar() {
             <div className="bg-[#dbedfa] rounded-[32px] p-5 border border-border shadow-lg">
               <div className="grid grid-cols-3 gap-4">
                 {servicesPreview.map((service) => (
-                  <a
+                  <Link
                     key={service.title}
-                    href="#services"
+                    href={service.href}
+                    onClick={() => setServicesOpen(false)}
                     className="group/card relative aspect-[4/5] rounded-2xl overflow-hidden"
                   >
                     <Image
@@ -236,19 +253,20 @@ export function Navbar() {
                         </svg>
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="mt-5 flex justify-center">
-                <a
-                  href="#services"
+                <Link
+                  href="/services"
+                  onClick={() => setServicesOpen(false)}
                   className="group/more inline-flex items-center gap-1.5 h-[44px] px-5 bg-primary text-primary-foreground text-[14px] font-medium rounded-full hover:bg-primary/90 transition-colors"
                 >
                   View more services
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover/more:translate-x-0.5">
                     <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -258,7 +276,7 @@ export function Navbar() {
         {mobileOpen && (
           <div className="md:hidden mt-2 bg-[#dbedfa] rounded-2xl p-6 border border-border shadow-sm">
             <div className="flex flex-col gap-4">
-              <a href="#home" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>Home</a>
+              <Link href="/" className="text-[15px] font-medium text-foreground" onClick={closeMobile}>Home</Link>
 
               {/* Services — expandable */}
               <div className="flex flex-col gap-3">
@@ -283,9 +301,9 @@ export function Navbar() {
                 {mobileServicesOpen && (
                   <div className="flex flex-col gap-3">
                     {servicesPreview.map((service) => (
-                      <a
+                      <Link
                         key={service.title}
-                        href="#services"
+                        href={service.href}
                         onClick={closeMobile}
                         className="relative h-[90px] rounded-2xl overflow-hidden"
                       >
@@ -300,15 +318,15 @@ export function Navbar() {
                         <span className="absolute inset-0 flex items-center justify-center text-white text-[16px] font-medium text-center px-4">
                           {service.title}
                         </span>
-                      </a>
+                      </Link>
                     ))}
-                    <a
-                      href="#services"
+                    <Link
+                      href="/services"
                       onClick={closeMobile}
                       className="inline-flex items-center justify-center h-[44px] bg-primary text-primary-foreground text-[14px] font-medium rounded-full"
                     >
                       View more services
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 const services = [
@@ -8,31 +9,37 @@ const services = [
     title: "Custom software development",
     desc: "Tailor-made applications built to your exact requirements — from architecture to deployment.",
     img: "/images/service-1.jpg",
+    href: "/services/custom-software-development",
   },
   {
     title: "Mobile & web app development",
     desc: "Responsive web apps and native or cross-platform mobile experiences users love.",
     img: "/images/service-2.jpg",
+    href: "/services/mobile-web-app-development",
   },
   {
     title: "Cloud & DevOps solutions",
     desc: "Scalable cloud architecture, CI/CD pipelines, and reliable infrastructure to ship faster.",
     img: "/images/service-3.jpg",
+    href: "/services/cloud-devops-solutions",
   },
   {
     title: "AI-First Development ",
     desc: "Designing and building products with AI at the core — from LLM integrations to intelligent features that make software smarter from day one.",
     img: "/images/service-1.jpg",
+    href: "/services/ai-first-development",
   },
   {
     title: "AI Agents & Automation",
     desc: "Creating autonomous AI agents and workflow automations that handle repetitive tasks, streamline operations, and reduce manual effort.",
     img: "/images/service-2.jpg",
+    href: "/services/ai-agents-automation",
   },
   {
     title: "SaaS & Product Engineering ",
     desc: "End-to-end development of scalable SaaS platforms and digital products, built for growth, reliability, and speed to market.",
     img: "/images/service-3.jpg",
+    href: "/services/saas-product-engineering",
   },
 ];
 
@@ -53,9 +60,11 @@ export function Services() {
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {services.map((service, i) => (
-            <article
+            <Link
               key={service.title}
-              className="group relative rounded-[20px] overflow-hidden aspect-[4/5] text-white"
+              href={service.href}
+              aria-label={`Open ${service.title.trim()}`}
+              className="group relative block rounded-[20px] overflow-hidden aspect-[4/5] text-white"
             >
               {/* Image fills the whole card, with both scroll-zoom-out and hover-zoom-in */}
               <motion.div
@@ -91,9 +100,9 @@ export function Services() {
               {/* Top overlay: title + plus icon */}
               <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-5">
                 <h3 className="text-lg font-medium">{service.title}</h3>
-                <button
-                  aria-label={`Open ${service.title} details`}
-                  className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors shrink-0 backdrop-blur-sm"
+                <span
+                  aria-hidden="true"
+                  className="w-8 h-8 rounded-full bg-white/15 group-hover:bg-white/25 flex items-center justify-center transition-colors shrink-0 backdrop-blur-sm"
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path
@@ -103,14 +112,14 @@ export function Services() {
                       strokeLinecap="round"
                     />
                   </svg>
-                </button>
+                </span>
               </div>
 
               {/* Bottom overlay: description */}
               <p className="absolute bottom-0 left-0 right-0 p-5 text-white/90 text-sm leading-relaxed">
                 {service.desc}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
